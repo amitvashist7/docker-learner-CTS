@@ -1,0 +1,4 @@
+# My test docker compose hello-world environment.
+
+my-test: 
+  image: hello-world

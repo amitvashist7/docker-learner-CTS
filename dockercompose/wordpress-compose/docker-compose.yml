@@ -1,0 +1,34 @@
+# Three Tier Application Env ( Nginx, Wordpress & Mariadb )
+
+nginx: 
+    image: nginx:latest
+    ports:
+        - '80:80'
+    volumes: 
+        - ./nginx:/etc/nginx/conf.d
+        - ./log/nginx:/var/log/nginx
+        - ./wordpress:/var/www/html
+    links: 
+        - wordpress
+    restart: always
+
+mariadb: 
+    image: mariadb
+    volumes: 
+        - ./db-data:/var/lib/mysql
+    environment:
+        - MYSQL_ROOT_PASSWORD=aqwe123
+    restart: always
+
+wordpress: 
+    image: wordpress:4.7.1-php7.0-fpm
+    volumes: 
+        - ./wordpress:/var/www/html
+    environment:
+        - WORDPRESS_DB_NAME=wpdb
+        - WORDPRESS_TABLE_PREFIX=wp_
+        - WORDPRESS_DB_HOST=mariadb
+        - WORDPRESS_DB_PASSWORD=aqwe123
+    links: 
+        - mariadb
+    restart: always

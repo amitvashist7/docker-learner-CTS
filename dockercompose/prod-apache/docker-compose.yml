@@ -1,0 +1,7 @@
+# My PROD Ubuntu Apache Env.
+
+
+my-apache: 
+  build: .
+  ports: 
+      - '8091:80'

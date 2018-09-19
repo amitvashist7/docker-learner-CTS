@@ -1,0 +1,7 @@
+# My UAT Pyhton Based Apache Env.
+
+
+my-apache: 
+  build: .
+  ports: 
+      - '9091:80'

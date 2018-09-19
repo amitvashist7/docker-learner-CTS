@@ -1,0 +1,11 @@
+# My PROD Ubuntu Apache Env.
+my-apache: 
+  build: './ubuntu'
+  ports: 
+      - '8091:80'
+
+# My Python Apache Env.
+my-python: 
+  build: './python'
+  ports: 
+      - '9091:80'

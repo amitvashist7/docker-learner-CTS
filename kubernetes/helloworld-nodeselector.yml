@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: helloworld-deployment-4
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: helloworld-4
+    spec:
+      containers:
+      - name: k8s-demo
+        image: amitvashist7/k8s-tiny-web
+        ports:
+        - name: nodejs-port
+          containerPort: 80
+      nodeSelector:
+        hardware: virtual
+        env: uat
+        dept: training
